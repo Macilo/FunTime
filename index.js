@@ -6,10 +6,7 @@ const path = require('path')
 const app = express()
 
 // middleware
-const logger = (req, res, next) => {
-  console.log('What it do baby')
-  next()
-}
+const logger = require(path.join(__dirname, 'middleware', 'logger'))
 
 // using middleware
 app.use(logger)
