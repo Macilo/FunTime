@@ -10,15 +10,14 @@ const logger = require(path.join(__dirname, 'middleware', 'logger'))
 
 // using middleware
 app.use(logger)
-const users = require(path.join(__dirname, 'models', 'users'))
-
-// gets all users
-app.get('/api/users', (req, res) => {
-  res.json(users)
-})
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // set up static folder
 app.use(express.static(path.join(__dirname, 'public')))
+
+// users API routes
+app.use('/api/users/', require(path.join(__dirname, 'routes', 'api', 'usersRoutes')))
 
 // app.get('/', (req, res) => {
 /// /  res.sendFile(path.join(__dirname, 'public', 'index.html'))
