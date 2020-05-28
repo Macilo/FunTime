@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
   res.json(users.filter(user => user.id === parseInt(req.params.id)))
 })
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
   const newUser = {
     id: uuid.v4(),
     name: req.body.name,
